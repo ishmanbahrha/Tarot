@@ -1,4 +1,5 @@
 import streamlit as st
+import time
 
 st.title('Tarot')
 st.subheader('_Welcome to your digital Tarot Deck_', divider='blue')
@@ -27,3 +28,9 @@ with col2:
 
 with col3:
     st.image(images[2], width = 250)
+
+for i in images:
+    with col2:
+        a = st.image(i, width = 250)
+    time.sleep(1)
+    a.empty()
