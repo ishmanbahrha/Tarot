@@ -1,8 +1,11 @@
 import streamlit as st
+import cards
 import time
+import random
 
 st.title('Tarot')
 st.subheader('_Welcome to your digital Tarot Deck_', divider='blue')
+
 
 # Buttons
 blankcol, buttoncol = st.columns([1,1])
@@ -10,27 +13,23 @@ blankcol, buttoncol = st.columns([1,1])
 with blankcol:
     st.write("")
 with buttoncol:
-    st.button(":blue[Shuffle Deck]")
-
-
-# Cards
-images = ["assets/Fool.jpeg",
-          "assets/HighPriestess.jpeg",
-          "assets/World.jpeg"]
+    but = st.button(":blue[Shuffle Deck]")
 
 col1, col2, col3 = st.columns([2,2,1])
 
-with col1:
-    st.image(images[1], width = 250)
-
-with col2:
-    st.image(images[0], width = 250)
-
-with col3:
-    st.image(images[2], width = 250)
-
-for i in images:
+def run():
+    random.shuffle(cards.images)
+    time.sleep(0.5)
     with col2:
-        a = st.image(i, width = 250)
-    time.sleep(1)
-    a.empty()
+        st.image(cards.images[0], width = 250)
+    time.sleep(0.5)
+
+    with col1:
+        st.image(cards.images[1], width = 250)
+    time.sleep(0.5)
+
+    with col3:
+        st.image(cards.images[2], width = 250)
+
+if but:
+    run()
